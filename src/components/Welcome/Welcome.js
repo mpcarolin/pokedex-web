@@ -14,6 +14,14 @@ const pages = [
   { name: "About", icon: unknown, route: "/about" } 
 ]
 
+// TODO: forget storing the current page state in the navbar. Just use the path name
+// from window! 
+const getCurrentRoute = () => {
+  return window.location.pathname
+}
+
+console.log(getCurrentRoute())
+
 const NavLink = (props) => {
   const navClass = "nav-link " + (props.isCurrent ? "selected" : "")
   return (
@@ -25,7 +33,6 @@ const NavLink = (props) => {
 }
 
 const NavLinks = (props) => {
-  console.log(props)
   return (
     <ul className={ props.containerClass || "" }>
       { 
