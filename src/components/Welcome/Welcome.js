@@ -14,14 +14,22 @@ const pages = [
   { name: "About", icon: unknown, route: "/about" } 
 ]
 
+const NavLink = (props) => {
+  const navClass = "nav-link " + (props.isCurrent ? "selected" : "")
+  return (
+    <span className="nav-link-flex-container" key={ props.link.name }>
+      <img width="50px" className="nav-link-icon" src={ props.link.icon} />
+      <li className={navClass}>{ props.link.name }</li>
+    </span>
+  )
+}
+
 const NavLinks = (props) => {
+  console.log(props)
   return (
     <ul className={ props.containerClass || "" }>
       { 
-        props.links.map(link => <span className="nav-link-flex-container" key={ link.name }>
-                                  <img width="50px" className="nav-link-icon" src={link.icon} />
-                                  <li className='nav-link'>{ link.name }</li>
-                                </span>)
+        props.links.map(link => <NavLink key={link.route} link={link} isCurrent={ link.route === props.currentPage }/>)
       }
     </ul>
   ) 
@@ -32,7 +40,7 @@ const Sidebar = (props) => {
   return (
     <div className="sidebar"> 
         <i onClick={ props.handleClick } className="nav-icon far fa-times-circle"></i>
-        <NavLinks links={props.links} containerClass="sidebar-ul" />
+        <NavLinks currentPage={props.currentPage} links={props.links} containerClass="sidebar-ul" />
     </div>
   )  
 }
@@ -40,6 +48,7 @@ const Sidebar = (props) => {
 class Welcome extends Component {
   state = {
     showSidebar: false,
+    currentPage: "/pokemon"
   }
 
   handleClick = () => {
@@ -55,10 +64,13 @@ class Welcome extends Component {
           <button className="sidebar-btn fas fa-bars" onClick={ this.handleClick } />
           <img className="vertical-align site-logo" src={logo} height="50px" />
           <h1 className="nav-title">My Pokédex!</h1>
-          <NavLinks links={pages} containerClass="nav-link-desktop-container" />
+          <NavLinks links={pages} 
+                    currentPage={this.state.currentPage}
+                    containerClass="nav-link-desktop-container" />
         </div>
         <Sidebar handleClick={this.handleClick}
                  visible={this.state.showSidebar} 
+                 currentPage={this.state.currentPage}
                  links={pages} />
       </div>
     );
