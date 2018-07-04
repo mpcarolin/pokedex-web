@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import style from './Welcome.css'
 
+import Pokemon from '../Pokemon/Pokemon.js'
+
 import logo from "../../assets/images/pokedex_dark.svg"
 import pikachu from "../../assets/icons/pokemon/regular/pikachu.png"
 import pokeball from "../../assets/icons/pokeball/poke.png"
@@ -79,6 +81,7 @@ class Welcome extends Component {
                  visible={this.state.showSidebar} 
                  currentPage={this.state.currentPage}
                  links={pages} />
+        <Pokemon />
       </div>
     );
   }
