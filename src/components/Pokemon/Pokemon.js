@@ -46,42 +46,6 @@ let pokemon = [
     icon: require("../../assets/icons/pokemon/regular/squirtle.png"),
     types: [Types.WATER]
   },
-    {
-    name: "Bulbasaur",
-    id: 1,
-    icon: require("../../assets/icons/pokemon/regular/bulbasaur.png"),
-    types: [Types.GRASS, Types.POISON]
-  },
-  {
-    name: "Ivysaur",
-    id: 2,
-    icon: require("../../assets/icons/pokemon/regular/ivysaur.png"),
-    types: [Types.GRASS, Types.POISON]
-  },
-  {
-    name: "Venusaur",
-    id: 3,
-    icon: require("../../assets/icons/pokemon/regular/venusaur.png"),
-    types: [Types.GRASS, Types.POISON]
-  },
-  {
-    name: "Charmander",
-    id: 4,
-    icon: require("../../assets/icons/pokemon/regular/charmander.png"),
-    types: [Types.FIRE]
-  },
-  {
-    name: "Charmeleon",
-    id: 5,
-    icon: require("../../assets/icons/pokemon/regular/charmeleon.png"),
-    types: [Types.FIRE]
-  },
-  {
-    name: "Charizard",
-    id: 6,
-    icon: require("../../assets/icons/pokemon/regular/charizard.png"),
-    types: [Types.FIRE, Types.FLYING]
-  }
 ]
 
 // TODO: find somewhere else to put this
@@ -96,7 +60,7 @@ const CSS_COLORS = {
 
 const Card = (props) => {
   const {name, id, icon, types} = props.element
-  const bgColor = "var(--pokedex-green)"//CSS_COLORS[types[0]]
+  const bgColor = CSS_COLORS[types[0]]
   const myStyle = { "backgroundColor": bgColor }
   return (
     <div style={ myStyle } className="card">  
@@ -142,7 +106,7 @@ class Pokemon extends Component {
     const newText = e.target.value
     this.setState(prev => ({
       filterText: newText,
-      pokemon: pokemon.filter(p => ((newText === "") || p.name.includes(newText)))
+      pokemon: pokemon.filter(p => ((newText === "") || p.name.toLowerCase().includes(newText.toLowerCase())))
     }))
   }
 
