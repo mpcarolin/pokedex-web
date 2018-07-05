@@ -4,10 +4,19 @@
   text-align: center;
   width: 100%;
   height: 100%;
+
+}
+:root {
+  --pokedex-red: #da1333;
+  --pokedex-white: #dedede;
+  --pokedex-blue: #33acfa;
+  --pokedex-grey:  #03312b;
+  --pokedex-green: #54ad62;
 }
 
 html {
-  background-color: #dedede;
+  /*background-color: #dedede;*/
+  background-color: var(--pokedex-white)
 }
 
 html * {

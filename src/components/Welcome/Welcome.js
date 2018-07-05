@@ -77,6 +77,7 @@ class Welcome extends Component {
                     currentPage={this.state.currentPage}
                     containerClass="nav-link-desktop-container" />
         </div>
+        <div className="spacer"> &nbsp; </div>
         <Sidebar handleClick={this.handleClick}
                  visible={this.state.showSidebar} 
                  currentPage={this.state.currentPage}
