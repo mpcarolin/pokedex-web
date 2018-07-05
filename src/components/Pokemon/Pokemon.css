@@ -68,8 +68,13 @@
 	border: none;
 	border-radius: 0px;
 	width: 90%;
-	height: 30px;
+	height: 40px;
 	padding: 5px;
 
 	z-index: 8;
+
+}
+
+.filter-bar:focus {
+	outline: none;
 }
