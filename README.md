@@ -2,7 +2,7 @@
 
 A responsive, mobile-first Pokedex web application built in ReactJS
 
-![Example]("info/showcase.gif")
+![Example]("https://github.com/mpcarolin/pokedex-web/blob/develop/info/showcase.gif")
 
 ## Available Scripts
 
