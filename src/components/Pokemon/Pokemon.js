@@ -71,13 +71,9 @@ const Card = (props) => {
   ) 
 }
 
-function scrollme (e) {
-  console.log(e)
-}
-
 const CardList = (props) => {
   return (
-    <div onScroll={scrollme} className="card-list">
+    <div className="card-list">
     {
       props.elements.map(el => <Card key={el.id} element={el} />)
     }
@@ -115,14 +111,12 @@ const matches = (p, text, type) => {
     }
 
     if (type && (type !== "any")) {
-      visible = p.types.includes(type)
+      visible = visible && p.types.includes(type)
     }
     return visible
 }
 
-const notEmpty = (s) => {
-  return s && (s.length > 0)
-}
+const notEmpty = (s) => (s && (s.length > 0))
 
 class Pokemon extends Component {
   state = {
@@ -132,9 +126,8 @@ class Pokemon extends Component {
   }
 
   updateFilter = ({text, type}) => {
-    let newText = notEmpty(text) ? text : ""
-    let newType = notEmpty(type) ? type : "any"
-    console.log(type, newType)
+    let newText =  (text !== undefined) ? text : this.state.filterText
+    let newType = notEmpty(type) ? type : this.state.filterType
     this.setState(prev => ({
       filterText: newText,
       filterType: newType,

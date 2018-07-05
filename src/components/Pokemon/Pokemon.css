@@ -60,6 +60,8 @@
 	margin: 10px;
 	margin-bottom: 0px;
 	padding: 0px;
+
+	box-shadow: 0 2px 2px -2px gray;
 }
 
 .filter-bar {
@@ -74,8 +76,7 @@
 	height: 40px;
 	padding: 5px;
 
-	z-index: 8;
-
+	z-index: 9;
 }
 
 .card:visible {
@@ -87,7 +88,12 @@
 }
 
 .type-select {
-	border: 1px solid var(--pokedex-grey);	
+	border: none;
+	border-radius: 0px;
+	background-color: var(--pokedex-green);
+	color: white;
+
+	cursor: pointer;
 }
 
 .type-select:focus {
