@@ -5,16 +5,15 @@
 	display: flex;
 	flex-direction: column;
 	align-items: center;
+
 }
-
-
 
 .card {
 	position: relative;
 	display: flex;	
 	flex-direction: row;
 	align-items: center;
-	background-color: var(--pokedex-green);
+	/*background-color: var(--pokedex-green);*/
 	border-radius: 22px;
 	width: 100%;
 
@@ -24,6 +23,7 @@
 
 	color: white;
 
+	cursor: pointer;
 }
 
 .card > h3 {
@@ -43,7 +43,10 @@
 
 
 .card-list {
+	position: relative;
 	width: 80%;
+	height: 500px;
+	overflow: auto;
 }
 
 .filter-bar-container {
@@ -51,7 +54,7 @@
 	align-items: center;
 	flex-direction: row;
 	border: none;
-	border-bottom: 1px solid black;
+	border-bottom: 1px solid var(--pokedex-grey);
 	width: 60%;
 	position: relative;
 	margin: 10px;
@@ -73,6 +76,10 @@
 
 	z-index: 8;
 
+}
+
+.card:visible {
+	background-color: black;
 }
 
 .filter-bar:focus {

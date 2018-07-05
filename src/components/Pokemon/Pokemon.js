@@ -1,68 +1,119 @@
 import React, { Component } from 'react';
 import style from './Pokemon.css'
+import Types from '../../enums/types.js'
 
+// sample data for testing
 let pokemon = [
   {
     name: "Bulbasaur",
     id: 1,
-    icon: require("../../assets/icons/pokemon/regular/bulbasaur.png")
+    icon: require("../../assets/icons/pokemon/regular/bulbasaur.png"),
+    types: [Types.GRASS, Types.POISON]
   },
   {
     name: "Ivysaur",
     id: 2,
-    icon: require("../../assets/icons/pokemon/regular/ivysaur.png")
-  },
-  {
-    name: "Ivysaur",
-    id: 21,
-    icon: require("../../assets/icons/pokemon/regular/ivysaur.png")
-  },
-  {
-    name: "Ivysaur",
-    id: 22,
-    icon: require("../../assets/icons/pokemon/regular/ivysaur.png")
-  },
-  {
-    name: "Ivysaur",
-    id: 23,
-    icon: require("../../assets/icons/pokemon/regular/ivysaur.png")
+    icon: require("../../assets/icons/pokemon/regular/ivysaur.png"),
+    types: [Types.GRASS, Types.POISON]
   },
   {
     name: "Venusaur",
     id: 3,
-    icon: require("../../assets/icons/pokemon/regular/venusaur.png")
+    icon: require("../../assets/icons/pokemon/regular/venusaur.png"),
+    types: [Types.GRASS, Types.POISON]
+  },
+  {
+    name: "Charmander",
+    id: 4,
+    icon: require("../../assets/icons/pokemon/regular/charmander.png"),
+    types: [Types.FIRE]
+  },
+  {
+    name: "Charmeleon",
+    id: 5,
+    icon: require("../../assets/icons/pokemon/regular/charmeleon.png"),
+    types: [Types.FIRE]
+  },
+  {
+    name: "Charizard",
+    id: 6,
+    icon: require("../../assets/icons/pokemon/regular/charizard.png"),
+    types: [Types.FIRE, Types.FLYING]
+  },
+  {
+    name: "Squirtle",
+    id: 7,
+    icon: require("../../assets/icons/pokemon/regular/squirtle.png"),
+    types: [Types.WATER]
+  },
+    {
+    name: "Bulbasaur",
+    id: 1,
+    icon: require("../../assets/icons/pokemon/regular/bulbasaur.png"),
+    types: [Types.GRASS, Types.POISON]
+  },
+  {
+    name: "Ivysaur",
+    id: 2,
+    icon: require("../../assets/icons/pokemon/regular/ivysaur.png"),
+    types: [Types.GRASS, Types.POISON]
   },
   {
     name: "Venusaur",
-    id: 34,
-    icon: require("../../assets/icons/pokemon/regular/venusaur.png")
+    id: 3,
+    icon: require("../../assets/icons/pokemon/regular/venusaur.png"),
+    types: [Types.GRASS, Types.POISON]
   },
   {
-    name: "Venusaur",
-    id: 35,
-    icon: require("../../assets/icons/pokemon/regular/venusaur.png")
+    name: "Charmander",
+    id: 4,
+    icon: require("../../assets/icons/pokemon/regular/charmander.png"),
+    types: [Types.FIRE]
   },
   {
-    name: "Venusaur",
-    id: 356,
-    icon: require("../../assets/icons/pokemon/regular/venusaur.png")
+    name: "Charmeleon",
+    id: 5,
+    icon: require("../../assets/icons/pokemon/regular/charmeleon.png"),
+    types: [Types.FIRE]
   },
+  {
+    name: "Charizard",
+    id: 6,
+    icon: require("../../assets/icons/pokemon/regular/charizard.png"),
+    types: [Types.FIRE, Types.FLYING]
+  }
 ]
 
-const Card = ({element}) => {
-  let {name, id, icon} = element
+// TODO: find somewhere else to put this
+const CSS_COLORS = {
+  [Types.GRASS]: "var(--color-grass)",
+  [Types.WATER]: "var(--color-water)",
+  [Types.POISON]: "var(--color-poison)",
+  [Types.ELECTRIC]: "var(--color-electric)",
+  [Types.FLYING]: "var(--color-flying)",
+  [Types.FIRE]: "var(--color-fire)"
+}
+
+const Card = (props) => {
+  const {name, id, icon, types} = props.element
+  const bgColor = "var(--pokedex-green)"//CSS_COLORS[types[0]]
+  const myStyle = { "backgroundColor": bgColor }
   return (
-    <div className="card">  
-      <img src={icon} alt={name} />
-      <h3 className='card-id'>#{ id   }</h3>
+    <div style={ myStyle } className="card">  
+      <img src={ icon } alt={ name } />
+      <h3 className='card-id'>#{ id }</h3>
       <h3>{ name }</h3>
     </div>
   ) 
 }
 
+function scrollme (e) {
+  console.log(e)
+}
+
 const CardList = (props) => {
   return (
-    <div className="card-list">
+    <div onScroll={scrollme} className="card-list">
     {
       props.elements.map(el => <Card key={el.id} element={el} />)
     }
@@ -73,7 +124,7 @@ const CardList = (props) => {
 const FilterBar = (props) => {
   return (
     <div className="filter-bar-container">
-      <i className="fas fa-search" />
+      <i style={{color: "var(--pokedex-grey)"}}className="fas fa-search" />
       <input className="filter-bar" 
              placeholder="Filter Pokemon..." 
              onChange={props.onChange} />
