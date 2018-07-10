@@ -49,7 +49,9 @@ let pokemon = [
 ]
 
 // TODO: find somewhere else to put this
+// colors for the various types
 const CSS_COLORS = {
+  "any": "var(--pokedex-green)",
   [Types.GRASS]: "var(--color-grass)",
   [Types.WATER]: "var(--color-water)",
   [Types.POISON]: "var(--color-poison)",
@@ -81,29 +83,52 @@ const CardList = (props) => {
   ) 
 }
 
-const FilterBar = (props) => {
-  const placeholder = <option key="" value="" disabled>Type</option>
-  const defaultType = <option key="any" value="any">Any</option>
-  return (
-    <div className="filter-bar-container">
-      <i style={{color: "var(--pokedex-grey)"}}className="fas fa-search" />
-      <input className="filter-bar" 
-             placeholder="Filter Pokemon..." 
-             onChange={ (e) => props.onChange({text: e.target.value}) } />
-      <select defaultValue="" className="type-select" onChange={ (e) => props.onChange({type: e.target.value})} >
-      {
-        [placeholder, defaultType].concat(Object.values(Types).map(type =>
-                  <option key={ type } value={ type }>
-                    { type.charAt(0).toUpperCase() + type.slice(1) }
-                  </option>
-               ))
-      }
-      </select>
-    </div>
-  )
+class FilterBar extends Component {
+  state = { 
+    type: "any"
+  }
+
+  onTypeChange = (e) => {
+    const type = e.target.value
+    this.props.onChange({type})
+    this.setState({type})
+  }
+
+  selectStyle = () => {
+    const color = CSS_COLORS[this.state.type]
+    return {
+      "backgroundColor": CSS_COLORS[this.state.type]  
+    }
+  }
+
+  render () {
+    const placeholder = <option key="" value="" disabled>Type</option>
+    const defaultType = <option key="any" value="any">Any</option>
+    return (
+      <div className="filter-bar-container">
+        <i style={{color: "var(--pokedex-grey)"}}className="fas fa-search" />
+        <input className="filter-bar" 
+               placeholder="Filter Pokemon..." 
+               onChange={ (e) => this.props.onChange({text: e.target.value}) } />
+        <select defaultValue="" 
+                style={ this.selectStyle() } 
+                className="type-select" 
+                onChange={ this.onTypeChange }>
+        {
+          [placeholder, defaultType].concat(Object.values(Types).map(type =>
+                    <option key={ type } value={ type }>
+                      { type.charAt(0).toUpperCase() + type.slice(1) }
+                    </option>
+                 ))
+        }
+        </select>
+      </div>
+    )
+  }
 }
 
 
+// returns true if the pokemon, p, contains the text in its name and the type specified
 const matches = (p, text, type) => {
     let visible = true
     if (text && text.length > 0) {

@@ -90,7 +90,6 @@
 .type-select {
 	border: none;
 	border-radius: 0px;
-	background-color: var(--pokedex-green);
 	color: white;
 
 	cursor: pointer;
