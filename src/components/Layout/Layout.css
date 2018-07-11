@@ -90,6 +90,11 @@
 	font-size: 1.5em;
 }
 
+.router-link {
+	text-decoration: none;
+	color: white;
+}
+
 
 @media (max-width: 800px) {
 	.nav-link-icon {
