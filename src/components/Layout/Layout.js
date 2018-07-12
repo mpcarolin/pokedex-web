@@ -3,6 +3,7 @@ import style from './Layout.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Pokemon from '../Pokemon/Pokemon.js';
+import Detail from '../Detail/Detail.js'
 
 import logo from "../../assets/images/pokedex_dark.svg"
 import pikachu from "../../assets/icons/pokemon/regular/pikachu.png"
@@ -10,13 +11,14 @@ import pokeball from "../../assets/icons/pokeball/poke.png"
 import hm from "../../assets/icons/hm/fighting.png"
 import unknown from "../../assets/icons/pokemon/regular/unown.png"
 
+
 // pages 
 const pages = [
   { name: "Pokémon", icon: pikachu, route: "/", component: Pokemon },
   { name: "Moves", icon:  hm, route: "/moves", component: Pokemon },
   { name: "Items", icon: pokeball, route: "/items", component: Pokemon },
   { name: "About", icon: unknown, route: "/about", component: Pokemon },
-  { name: "Detail", route: "/pokemon/:id", component: Pokemon },
+  { name: "Detail", route: "/pokemon/:id", component: Detail },
 ]
 
 
@@ -53,6 +55,11 @@ const Sidebar = (props) => {
   )  
 }
 
+const routeMatches = (candidate, route) => {
+  return (candidate === route) ||
+         (candidate.replace(":")) 
+}
+
 // Navigation and router layout for application. Will render page content 
 // within layout frame of the navigation components, depending on the
 // URL routed to
@@ -86,8 +93,8 @@ class Layout extends Component {
                    currentPage={this.state.currentPage}
                    links={pages} />
           { 
-            // instantiate the routes. Here they render the current content component
-            pages.map(page => <Route key={page.route} path={page.route} component={page.component} />)
+            // render the exact matched component from the route
+            pages.map(page => <Route exact key={page.route} path={page.route} component={page.component} />)
           }
         </div>
       </Router>

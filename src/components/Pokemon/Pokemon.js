@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import style from './Pokemon.css'
 import Types from '../../enums/types.js'
+import {Link} from 'react-router-dom'
 
 // sample data for testing
 let pokemon = [
@@ -77,11 +78,13 @@ const Card = (props) => {
   const bgColor = CSS_COLORS[types[0]]
   const myStyle = { "backgroundColor": bgColor }
   return (
-    <div style={ myStyle } className="card">  
-      <img src={ icon } alt={ name } />
-      <h3 className='card-id'>#{ id }</h3>
-      <h3>{ name }</h3>
-    </div>
+    <Link className="router-link" to={"/pokemon/" + id}>
+      <div style={ myStyle } className="card">  
+        <img src={ icon } alt={ name } />
+        <h3 className='card-id'>#{ id }</h3>
+        <h3>{ name }</h3>
+      </div>
+    </Link>
   ) 
 }
 
