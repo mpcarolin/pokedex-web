@@ -6,6 +6,8 @@
 	flex-direction: column;
 	align-items: center;
 
+	height: 100%;
+
 }
 
 .card {
@@ -45,8 +47,8 @@
 .card-list {
 	position: relative;
 	width: 80%;
-	height: 500px;
-	overflow: auto;
+	overflow-y: scroll;
+	max-height: 100vh;
 }
 
 .filter-bar-container {
@@ -88,11 +90,16 @@
 }
 
 .type-select {
-	border: none;
-	border-radius: 0px;
 	color: white;
 
 	cursor: pointer;
+}
+
+@media(min-width: 750px) {
+	.type-select {
+		border-radius: 0px;
+		border: none;
+	}	
 }
 
 .type-select:focus {

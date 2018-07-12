@@ -87,7 +87,7 @@ class Layout extends Component {
                    links={pages} />
           { 
             // instantiate the routes. Here they render the current content component
-            pages.map(page => <Route path={page.route} component={page.component} />)
+            pages.map(page => <Route key={page.route} path={page.route} component={page.component} />)
           }
         </div>
       </Router>

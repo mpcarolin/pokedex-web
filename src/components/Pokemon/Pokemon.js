@@ -46,6 +46,18 @@ let pokemon = [
     icon: require("../../assets/icons/pokemon/regular/squirtle.png"),
     types: [Types.WATER]
   },
+  {
+    name: "Wartortle",
+    id: 8,
+    icon: require("../../assets/icons/pokemon/regular/wartortle.png"),
+    types: [Types.WATER]
+  },
+  {
+    name: "Blastoise",
+    id: 9,
+    icon: require("../../assets/icons/pokemon/regular/blastoise.png"),
+    types: [Types.WATER]
+  },
 ]
 
 // TODO: find somewhere else to put this
