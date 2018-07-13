@@ -1,7 +1,9 @@
-import React, { Component } from 'react';
+
 import style from './Pokemon.css'
 import Types from '../../enums/types.js'
+import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
+import Helper from './Helper.js'
 
 // sample data for testing
 let pokemon = [
@@ -142,22 +144,6 @@ class FilterBar extends Component {
   }
 }
 
-
-// returns true if the pokemon, p, contains the text in its name and the type specified
-const matches = (p, text, type) => {
-    let visible = true
-    if (text && text.length > 0) {
-      visible = p.name.toLowerCase().includes(text.toLowerCase())
-    }
-
-    if (type && (type !== "any")) {
-      visible = visible && p.types.includes(type)
-    }
-    return visible
-}
-
-const notEmpty = (s) => (s && (s.length > 0))
-
 class Pokemon extends Component {
   state = {
     filterText: "",
@@ -167,15 +153,15 @@ class Pokemon extends Component {
 
   updateFilter = ({text, type}) => {
     let newText =  (text !== undefined) ? text : this.state.filterText
-    let newType = notEmpty(type) ? type : this.state.filterType
+    let newType = Helper.notEmpty(type) ? type : this.state.filterType
     this.setState(prev => ({
       filterText: newText,
       filterType: newType,
-      pokemon: pokemon.filter(poke => matches(poke, newText, newType))
+      pokemon: pokemon.filter(poke => Helper.matches(poke, newText, newType))
     }))
   }
 
-  render() {
+  render () {
     return (
       <div className="pokemon-root">
         <FilterBar onChange={this.updateFilter}/>

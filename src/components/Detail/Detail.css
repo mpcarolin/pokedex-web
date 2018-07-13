@@ -1,3 +1,18 @@
 .detail-root {
-	
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
+}
+
+.top-detail {
+	display: flex;
+	flex-direction: row;	
+	justify-content: flex-start;
+}
+
+.portrait {
+	width: 300px;
+	height: 300px;
+	border: 2px solid green;
+	border-radius: 5px;
 }
