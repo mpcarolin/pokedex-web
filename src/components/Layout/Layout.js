@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import style from './Layout.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-import Pokemon from '../Pokemon/Pokemon.js';
-import Detail from '../Detail/Detail.js'
+import Pokemon from 'components/Pokemon/Pokemon.js';
+import Detail from 'components/Detail/Detail.js'
 
-import logo from "../../assets/images/pokedex_dark.svg"
-import pikachu from "../../assets/icons/pokemon/regular/pikachu.png"
-import pokeball from "../../assets/icons/pokeball/poke.png"
-import hm from "../../assets/icons/hm/fighting.png"
-import unknown from "../../assets/icons/pokemon/regular/unown.png"
+import logo from "assets/images/pokedex_dark.svg"
+import pikachu from "assets/icons/pokemon/regular/pikachu.png"
+import pokeball from "assets/icons/pokeball/poke.png"
+import hm from "assets/icons/hm/fighting.png"
+import unknown from "assets/icons/pokemon/regular/unown.png"
 
 
 // pages 
