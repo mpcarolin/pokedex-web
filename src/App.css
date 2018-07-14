@@ -4,15 +4,14 @@
   text-align: center;
   width: 100%;
   height: 100%;
-
-
 }
 
 :root {
   --pokedex-red: #da1333;
   --pokedex-white: #dedede;
   --pokedex-blue: #33acfa;
-  --pokedex-grey:  #03312b;
+  --pokedex-green-grey:  #03312b;
+  --pokedex-grey: #313c42;
   --pokedex-green: #54ad62;
 
   --color-grass: #9ccb58;
@@ -25,7 +24,7 @@
 
 html {
   background-color: var(--pokedex-white);
-  overflow: hidden;
+  /*overflow: hidden;*/
 }
 
 html * {

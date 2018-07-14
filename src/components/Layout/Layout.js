@@ -21,6 +21,8 @@ const pages = [
   { name: "Detail", route: "/pokemon/:id", component: Detail },
 ]
 
+const SITE_NAME ="My Pokédex"
+
 
 const NavLink = (props) => {
   const navClass = "nav-link " + (props.isCurrent ? "selected" : "")
@@ -82,7 +84,7 @@ class Layout extends Component {
           <div className="nav-bar">
             <button className="sidebar-btn fas fa-bars" onClick={ this.handleClick } />
             <img className="vertical-align site-logo" src={logo} height="50px" />
-            <h1 className="nav-title">My Pokédex!</h1>
+            <h1 className="nav-title">{SITE_NAME}</h1>
             <NavLinks links={pages} 
                       currentPage={this.state.currentPage}
                       containerClass="nav-link-desktop-container" />

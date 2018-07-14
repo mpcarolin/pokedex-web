@@ -1,27 +1,108 @@
 .detail-root {
 	display: flex;
 	flex-direction: column;
-	padding: 15px;
+	padding: 20px;
 	align-items: flex-start;
+
+	overflow: scroll;
 }
 
-.portrait {
-	width: 200px;
-	height: 200px;
+.detail-top-sliver {
+	width: 100%;
+}
+
+.portrait-container {
 	background-color: var(--color-grass);
-	border-radius: 9px;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+.portrait {
+	width: 65%;
+	background-color: var(--color-grass);
+	margin: 0;
+	padding: 0;
 }
 
 .detail-back {
+	float: left;
 	cursor: pointer;	
 	color: var(--pokedex-grey);
 	font-size: 2em;
-	float: left;
 	margin-bottom: 10px;
 }
 
-.top-detail {
+.detail-container {
 	display: flex;
-	flex-direction: row;	
+	align-items: flex-start;
+	flex-direction: column;	
 	justify-content: flex-start;
+	width: 100%;
 }
+
+.detail-card {
+	background-color: white;	
+	border-radius: 2px;
+	overflow: scroll;
+	box-shadow: 0px 1px 8px grey;
+}
+
+.detail-name-container {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	background-color: var(--pokedex-grey);
+	color: white;
+	width: 100%;
+}
+
+.detail-name {
+	padding: 0;	
+	margin: 5px;
+}
+
+.detail-text-container {
+	padding: 5px;
+}
+
+.detail-text {
+	margin-top: 5px;	
+	margin-bottom: 0px;
+	text-align: left;
+}
+
+.detail-id {
+	float: right;
+	margin-left: auto;
+	margin: 0;
+	padding: 0;
+	color: var(--pokedex-grey);
+}
+
+.detail-description {
+	text-align: left;
+	margin: 15px;
+}
+
+.flex-item {
+	margin-right: 15px;
+}
+
+.detail-type-container {
+	margin-top: 15px;
+	padding: 15px;
+}
+
+.type-box {
+	color: white;	
+	padding: 10px;
+	margin-right: 10px;
+	border-radius: 9px;
+}
+
+.detail-card-title {
+	margin: 0;
+	margin-bottom: 15px;
+	text-align: left;
+}
+
