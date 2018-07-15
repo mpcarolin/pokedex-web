@@ -1,7 +1,7 @@
 var xDown = null;                                                        
 var yDown = null;                                                        
 
-// todo: put this into a utility class named SwipeHelper
+// todo: put this into a utility class named SwipeHelper. Or pair with component Swipe wrapper.
 export const SWIPE_DIR = {
     "LEFT": "left",
     "RIGHT": "right",
@@ -27,20 +27,16 @@ export const getSwipeDirection = (evt, xDown, yDown) => {
     var xDiff = xDown - current.xDown;
     var yDiff = yDown - current.yDown;
 
-    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {/*most significant*/
+    if ( Math.abs( xDiff ) > Math.abs( yDiff ) ) {
         if ( xDiff > 0 ) {
-            /* left swipe */
             return SWIPE_DIR.LEFT
         } else {
-            /* right swipe */
             return SWIPE_DIR.RIGHT
         }                       
     } else {
         if ( yDiff > 0 ) {
-            /* up swipe */ 
             return SWIPE_DIR.UP
         } else { 
-            /* down swipe */
             return SWIPE_DIR.DOWN
         }                                                                 
     }
