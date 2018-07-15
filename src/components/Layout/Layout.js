@@ -48,10 +48,14 @@ const NavLinks = (props) => {
 }
 
 const Sidebar = (props) => {
-  if (!props.visible) return <i style={{display: "none"}}/>
+  //if (!props.visible) return <i style={{display: "none"}}/>
+  const getClass = () => {
+    if (props.visible === null) return "sidebar hidden-sidebar"
+    return `sidebar ${props.visible ? "side-open" : "side-closed"}`
+  }
   return (
-    <div className="sidebar"> 
-        <i onClick={ props.handleClick } className="nav-icon far fa-times-circle"></i>
+    <div className={getClass()}> 
+        <i onClick={props.handleClick} className="nav-icon far fa-times-circle"></i>
         <NavLinks currentPage={props.currentPage} links={props.links} containerClass="sidebar-ul" />
     </div>
   )  
@@ -67,7 +71,7 @@ const routeMatches = (candidate, route) => {
 // URL routed to
 class Layout extends Component {
   state = {
-    showSidebar: false,
+    showSidebar: null,
     currentPage: "/pokemon"
   }
 

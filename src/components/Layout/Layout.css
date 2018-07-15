@@ -164,14 +164,33 @@
 
 	box-shadow: 2px 2px 5px grey;
 	padding: 10px;
-
-	animation-name: sidebar-anim;
-	animation-duration: 0.5s;
 }
 
-@keyframes sidebar-anim {
-	0% {left: -200px;}
-	100% {left: 0px;}
+.hidden-sidebar {
+	left: -250px;	
+}
+
+.side-open {
+	animation-name: sidebar-open-anim;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards; /* persist the "to" state */
+}
+
+
+@keyframes sidebar-open-anim {
+	from { left: -250px; }
+	to {left: 0px;}
+}
+
+.side-closed {
+	animation-name: sidebar-close-anim;
+	animation-duration: 0.5s;
+	animation-fill-mode: forwards;
+}
+
+@keyframes sidebar-close-anim {
+	from { left: 0px; }
+	to { left: -250px; }
 }
 
 .nav-icon {
