@@ -60,19 +60,46 @@ const PokemonTypes = ({species}) => {
 const StatBar = ({name, value}) => {
   return (
     <div className="stat-bar">
-      <h5>{name}</h5>
+      <div className="stat-bar-key">{Helper.toPascalCase(name)}</div>
+      <div className="stat-bar-value">
+        <div className="stat-bar-value-meter" style={{"width": `${value}%`}}>
+          {value}
+        </div>
+      </div>
     </div>
   )  
 }
 
 const Stats = ({stats}) => {
   return (
-    <div className="detail-container">
+    <div className="detail-container column-container">
       <h3 className="detail-card-title">Stats</h3>
       {
         Object.keys(stats)
               .map(stat => <StatBar key={stat} name={stat} value={stats[stat]} />)
       }
+    </div>
+  )
+}
+
+const Ability = ({ability}) => {
+  return (
+    <div className="row-container">
+      <li style={{"marginRight": "5px"}} key={ability}>{ability}</li>
+      <i className="far fa-question-circle"></i> 
+    </div>
+  )  
+}
+
+const Abilities = ({abilities}) => {
+  return (
+    <div className="detail-container column-container">
+      <h3 className="detail-card-title">Abilities</h3>
+      <ul className="detail-abilities">
+      {
+        abilities.map(ability => <Ability key={ability} ability={ability} />)
+      }
+      </ul>
     </div>
   )
 }
@@ -98,6 +125,7 @@ class Detail extends Component {
           <DetailBox id={id}>
             <PokemonTypes species={pokemon[id - 1]} />
             <Stats stats={pokemon[id - 1].stats} />
+            <Abilities abilities={pokemon[id - 1].abilities} />
           </DetailBox>
         </div>
       </div>

@@ -14,7 +14,10 @@ export const pokemon = [
       "speed": 45,
       "special attack": 65,
       "special defense": 65
-    }
+    },
+    abilities: [
+      "Chlorophyll", "Overgrow"
+    ]
   },
   {
     name: "Ivysaur",
