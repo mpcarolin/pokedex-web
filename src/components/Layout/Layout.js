@@ -11,6 +11,7 @@ import pokeball from "assets/icons/pokeball/poke.png"
 import hm from "assets/icons/hm/fighting.png"
 import unknown from "assets/icons/pokemon/regular/unown.png"
 
+import Helper from "./Helper.js"
 
 // pages 
 const pages = [
@@ -54,16 +55,14 @@ const Sidebar = (props) => {
     return `sidebar ${props.visible ? "side-open" : "side-closed"}`
   }
   return (
-    <div className={getClass()}> 
+    <div className={getClass()}
+         onTouchStart={props.touchStartHandler}
+         onTouchMove={props.moveHandler}
+    > 
         <i onClick={props.handleClick} className="nav-icon far fa-times-circle"></i>
         <NavLinks currentPage={props.currentPage} links={props.links} containerClass="sidebar-ul" />
     </div>
   )  
-}
-
-const routeMatches = (candidate, route) => {
-  return (candidate === route) ||
-         (candidate.replace(":")) 
 }
 
 // Navigation and router layout for application. Will render page content 
@@ -72,7 +71,9 @@ const routeMatches = (candidate, route) => {
 class Layout extends Component {
   state = {
     showSidebar: null,
-    currentPage: "/pokemon"
+    currentPage: "/pokemon",
+    sideSwipeProps: null, 
+    rootSwipeProps: null
   }
 
   handleClick = () => {
@@ -81,10 +82,59 @@ class Layout extends Component {
     })) 
   }
 
+  //TODO: make a component out of this that wraps around sidebar.
+  handleTouchMove = (evt) => {
+    let props = this.state.sideSwipeProps
+    if (!props) return
+    let direction = Helper.getSwipeDirection(evt, props.xDown, props.yDown)
+    if (direction === Helper.SWIPE_DIR.LEFT && this.state.showSidebar) {
+      this.handleClick() 
+    }
+    this.setState({
+      swipeProps: null
+    })
+  }
+
+  handleTouchStart = (evt) => {
+    const props = Helper.getSwipeProps(evt)
+    this.setState({
+      sideSwipeProps: props
+    })
+  }
+
+  _isPeekSwipe = (x) => {
+    const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    return parseInt(x) <= (width / 3.6)
+  }
+
+  handleRootMove = (evt) => {
+    let props = this.state.rootSwipeProps
+    if (!props) return
+    let direction = Helper.getSwipeDirection(evt, props.xDown, props.yDown)
+    if (!this.state.showSidebar && 
+        (direction === Helper.SWIPE_DIR.RIGHT) &&
+        this._isPeekSwipe(props.xDown)) {
+      this.handleClick() 
+    }
+    this.setState({
+      rootSwipeProps: null
+    })
+  }
+
+  handleRootStart = (evt) => {
+    const props = Helper.getSwipeProps(evt)
+    this.setState({
+      rootSwipeProps: props
+    })
+  }
+
   render() {
     return (
       <Router>
-        <div className="welcome-root">
+        <div className="welcome-root"
+             onTouchStart={this.handleRootStart}
+             onTouchMove={this.handleRootMove}
+        >
           <div className="nav-bar">
             <button className="sidebar-btn fas fa-bars" onClick={ this.handleClick } />
             <img className="vertical-align site-logo" src={logo} height="50px" />
@@ -96,6 +146,8 @@ class Layout extends Component {
           <div className="spacer"> &nbsp; </div>
           <Sidebar handleClick={this.handleClick}
                    visible={this.state.showSidebar} 
+                   touchStartHandler={this.handleTouchStart}
+                   moveHandler={this.handleTouchMove}
                    currentPage={this.state.currentPage}
                    links={pages} />
           { 

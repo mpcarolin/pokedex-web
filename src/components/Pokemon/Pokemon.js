@@ -9,7 +9,6 @@ import {pokemon, CSS_COLORS} from 'store/pokemon.js'
 
 const Card = (props) => {
   const {name, id, icon, types} = props.element
-  console.log(name, id)
   const bgColor = CSS_COLORS[types[0]]
   const myStyle = { "backgroundColor": bgColor }
   return (
