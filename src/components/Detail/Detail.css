@@ -32,11 +32,13 @@
 	margin-bottom: 10px;
 }
 
-.detail-container {
+.card-container {
 	display: flex;
 	align-items: flex-start;
 	flex-direction: column;	
 	justify-content: flex-start;
+	overflow-y: scroll;
+	overflow-x: hidden;
 	width: 100%;
 }
 
@@ -88,21 +90,52 @@
 	margin-right: 15px;
 }
 
-.detail-type-container {
-	margin-top: 15px;
-	padding: 15px;
+.detail-container {
+	margin-top: 0px;
+	padding-left: 15px;
+	padding-right: 15px;
+	margin-bottom: 15px;
+	width: 100%;
 }
 
 .type-box {
+	width: 15%;
 	color: white;	
 	padding: 10px;
+	margin-top: 0px;
 	margin-right: 10px;
 	border-radius: 9px;
 }
 
+.row-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.column-container {
+	display: flex;
+	flex-direction: column;
+}
+
 .detail-card-title {
 	margin: 0;
-	margin-bottom: 15px;
+	margin-bottom: 9px;
 	text-align: left;
+}
+
+.stat-bar {
+	display: flex;
+	flex-direction: row;
+}
+
+.detail-stats-container {
+	display: flex;
+	flex-direction: row;
+}
+
+.detail-divider {
+	opacity: 0.5;
+	margin-left: 15px;
+	margin-right: 15px;
 }
 

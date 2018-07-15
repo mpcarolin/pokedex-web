@@ -5,11 +5,11 @@ import Helper from './Helper.js'
 
 import {pokemon, CSS_COLORS} from 'store/pokemon.js'
 
-const PokemonHighlights = ({id}) => {
+const DetailBox = ({id, children}) => {
   const img = require("assets/images/detail_" + id + ".png")
   const species = pokemon[id - 1]
   return (
-    <div className="detail-card detail-container">
+    <div className="card-container">
       <div className="portrait-container">
         <img src={img} className="flex-item portrait" />
       </div>
@@ -17,7 +17,16 @@ const PokemonHighlights = ({id}) => {
         <h1 className="detail-name">{species.name}</h1>
       </div>
       <div className="detail-text-container">
+        <h3 className="detail-description">Seed Pokemon</h3>
         <p className="detail-description">{species.description}</p>
+        {
+          children.map((child, idx) => (
+            <div key={idx}>
+              <hr className="detail-divider" />  
+              {child}
+            </div>
+          ))
+        }
       </div>
     </div>
   )
@@ -25,25 +34,47 @@ const PokemonHighlights = ({id}) => {
 
 const TypeBox = ({type}) => {
   return (
-    <span 
+    <div 
       key={type}
       style={{"backgroundColor": CSS_COLORS[type]}} 
       className="type-box"
     >
       {type}
-    </span>
+    </div>
   )
 }
 
 const PokemonTypes = ({species}) => {
   return (
-    <div className="detail-card detail-type-container">
-      <h2 className="detail-card-title">Types</h2>
+    <div className="detail-container">
+      <h3 className="detail-card-title">Types</h3>
+      <div className="row-container">
       {
-        species.types.map(type => <TypeBox type={type} />)
+        species.types.map(type => <TypeBox key={type} type={type} />)
       }
+      </div>
     </div>
   ) 
+}
+
+const StatBar = ({name, value}) => {
+  return (
+    <div className="stat-bar">
+      <h5>{name}</h5>
+    </div>
+  )  
+}
+
+const Stats = ({stats}) => {
+  return (
+    <div className="detail-container">
+      <h3 className="detail-card-title">Stats</h3>
+      {
+        Object.keys(stats)
+              .map(stat => <StatBar key={stat} name={stat} value={stats[stat]} />)
+      }
+    </div>
+  )
 }
 
 class Detail extends Component {
@@ -63,8 +94,12 @@ class Detail extends Component {
             {"#" + Helper.getPaddedNumber(id, 3)}
           </h1>
         </div>
-        <PokemonHighlights id={id} />
-        <PokemonTypes species={pokemon[id]} />
+        <div className="detail-card">
+          <DetailBox id={id}>
+            <PokemonTypes species={pokemon[id - 1]} />
+            <Stats stats={pokemon[id - 1].stats} />
+          </DetailBox>
+        </div>
       </div>
     )
   }

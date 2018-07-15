@@ -8,7 +8,7 @@ const pokemon = {
 	types: [Types.GRASS, Types.POISON]
 }
 
-test('matches', () => {
+describe('matches', () => {
 	it('returns true for a full match', () => {
 		expect(Helper.matches(pokemon, "Bulb", Types.GRASS)).toBe(true)	
 	})
@@ -44,7 +44,7 @@ test('matches', () => {
 	})
 })
 
-test('notEmpty', () => {
+describe('notEmpty', () => {
 	it('returns true if string is not empty', () => {
 		expect(Helper.notEmpty("hi")).toBe(true)
 	})

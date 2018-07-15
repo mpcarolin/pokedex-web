@@ -6,7 +6,15 @@ export const pokemon = [
     id: 1,
     icon: require("assets/icons/pokemon/regular/bulbasaur.png"),
     types: [Types.GRASS, Types.POISON],
-    description: "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger."
+    description: "Bulbasaur can be seen napping in bright sunlight. There is a seed on its back. By soaking up the sun's rays, the seed grows progressively larger.",
+    stats: {
+      "hp": 45,
+      "attack": 49,
+      "defense": 49,
+      "speed": 45,
+      "special attack": 65,
+      "special defense": 65
+    }
   },
   {
     name: "Ivysaur",

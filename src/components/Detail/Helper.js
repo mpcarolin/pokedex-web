@@ -9,4 +9,10 @@ export const getPaddedNumber = (num, maxDigits) => {
 	return numStr
 }
 
-export default {getPaddedNumber}
+const toPascal = (word) => word.charAt(0).toUpperCase() + word.substring(1)
+export const toPascalCase = (str) => {
+	const words = str.split(" ")
+	return words.map(toPascal).join(" ")
+}
+
+export default { getPaddedNumber, toPascalCase }

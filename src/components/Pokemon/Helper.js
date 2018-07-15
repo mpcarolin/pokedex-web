@@ -12,6 +12,6 @@ export const matches = (p, text, type) => {
     return visible
 }
 
-export const notEmpty = (s) => (s && (s.length > 0))
+export const notEmpty = (s) => ((s !== null) && (s.length > 0))
 
 export default {matches, notEmpty}
