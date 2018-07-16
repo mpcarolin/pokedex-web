@@ -16,13 +16,11 @@ const DetailBox = ({id, children}) => {
       <div className="detail-name-container">
         <h1 className="detail-name">{species.name}</h1>
       </div>
-      <div className="detail-text-container">
-        <h3 className="detail-description">Seed Pokemon</h3>
-        <p className="detail-description">{species.description}</p>
+      <div className="detail-item-container">
         {
           children.map((child, idx) => (
             <div key={idx}>
-              <hr className="detail-divider" />  
+              {  (idx > 0) ? <hr className="detail-divider" /> : <i style={{"display": "none"}} /> }
               {child}
             </div>
           ))
@@ -32,12 +30,21 @@ const DetailBox = ({id, children}) => {
   )
 }
 
+const EntryText = ({description}) => {
+  return (
+    <div>
+      <h3 className="detail-description">Seed Pokemon</h3>
+      <p className="detail-description">{description}</p>
+    </div>    
+  )
+}
+
 const TypeBox = ({type}) => {
   return (
     <div 
       key={type}
       style={{"backgroundColor": CSS_COLORS[type]}} 
-      className="type-box"
+      className="detail-container type-box"
     >
       {type}
     </div>
@@ -62,7 +69,7 @@ const StatBar = ({name, value}) => {
     <div className="stat-bar">
       <div className="stat-bar-key">{Helper.toPascalCase(name)}</div>
       <div className="stat-bar-value">
-        <div className="stat-bar-value-meter" style={{"width": `${value}%`}}>
+        <div className="stat-bar-value-meter" style={{"width": `${(value / 255) * 100}%`}}>
           {value}
         </div>
       </div>
@@ -124,6 +131,7 @@ class Detail extends Component {
         <div className="detail-card">
           <DetailBox id={id}>
             <PokemonTypes species={pokemon[id - 1]} />
+            <EntryText description={pokemon[id - 1].description} />
             <Stats stats={pokemon[id - 1].stats} />
             <Abilities abilities={pokemon[id - 1].abilities} />
           </DetailBox>
