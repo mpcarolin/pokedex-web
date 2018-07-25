@@ -91,9 +91,9 @@ const Stats = ({stats}) => {
 
 const Ability = ({ability}) => {
   return (
-    <div className="row-container">
+    <div className="">
       <li style={{"marginRight": "5px"}} key={ability}>{ability}</li>
-      <i className="far fa-question-circle"></i> 
+      <i className="info-q far fa-question-circle"></i> 
     </div>
   )  
 }

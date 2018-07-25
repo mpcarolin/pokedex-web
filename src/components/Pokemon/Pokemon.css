@@ -7,7 +7,6 @@
 	align-items: center;
 
 	height: 100%;
-
 }
 
 .card {
@@ -15,7 +14,6 @@
 	display: flex;	
 	flex-direction: row;
 	align-items: center;
-	/*background-color: var(--pokedex-green);*/
 	border-radius: 22px;
 	width: 100%;
 

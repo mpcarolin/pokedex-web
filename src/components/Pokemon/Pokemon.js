@@ -58,6 +58,7 @@ class FilterBar extends Component {
         <i style={{color: "var(--pokedex-grey)"}}className="fas fa-search" />
         <input className="filter-bar" 
                placeholder="Filter Pokemon..." 
+               type="search"
                onChange={ (e) => this.props.onChange({text: e.target.value}) } />
         <select defaultValue="" 
                 style={ this.selectStyle() } 
