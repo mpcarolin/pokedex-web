@@ -10,7 +10,14 @@ import {pokemon, CSS_COLORS} from 'store/pokemon.js'
 const Card = (props) => {
   const {name, id, icon, types} = props.element
   const bgColor = CSS_COLORS[types[0]]
-  const myStyle = { "backgroundColor": bgColor }
+  const myStyle = { 
+    "backgroundColor": bgColor,
+  }
+  let secondTypeCSS = {}
+  if (types[1]) {
+    secondTypeCSS["backgroundColor"] = CSS_COLORS[types[1]]
+  }
+
   return (
     <Link className="router-link" to={"/pokemon/" + id}>
       <div style={ myStyle } className="card">  
