@@ -11,7 +11,7 @@ import pokeball from "assets/icons/pokeball/poke.png"
 import hm from "assets/icons/hm/fighting.png"
 import unknown from "assets/icons/pokemon/regular/unown.png"
 
-import Helper from "./Helper.js"
+import Helper from "util/SwipeHelper.js"
 
 // pages 
 const pages = [
@@ -23,7 +23,6 @@ const pages = [
 ]
 
 const SITE_NAME ="My Pokédex"
-
 
 const NavLink = (props) => {
   const navClass = "nav-link " + (props.isCurrent ? "selected" : "")
@@ -152,7 +151,9 @@ class Layout extends Component {
                    links={pages} />
           { 
             // render the exact matched component from the route
-            pages.map(page => <Route exact key={page.route} path={page.route} component={page.component} />)
+            pages.map(page => <Route exact key={page.route} 
+                                           path={page.route} 
+                                           component={page.component} />)
           }
         </div>
       </Router>
