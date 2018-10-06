@@ -111,6 +111,12 @@ const Abilities = ({abilities}) => {
   )
 }
 
+const EvolutionChain = () => {
+  return (
+    
+  ) 
+}
+
 class Detail extends Component {
   state = { }
 
