@@ -10,12 +10,19 @@ import {pokemon, CSS_COLORS} from 'store/pokemon.js'
 const Card = (props) => {
   const {name, id, icon, types} = props.element
   const bgColor = CSS_COLORS[types[0]]
-  const myStyle = { 
+  let myStyle = { 
     "backgroundColor": bgColor,
   }
   let secondTypeCSS = {}
   if (types[1]) {
     secondTypeCSS["backgroundColor"] = CSS_COLORS[types[1]]
+  }
+
+  let firstColor = CSS_COLORS[types[0]]
+  let secondColor = CSS_COLORS[types[1]]
+
+  myStyle = {
+    "backgroundImage": `linear-gradient(to right, ${firstColor}, ${firstColor}, ${secondColor || firstColor})`
   }
 
   return (

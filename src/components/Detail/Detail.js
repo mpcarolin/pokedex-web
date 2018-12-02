@@ -113,7 +113,7 @@ const Abilities = ({abilities}) => {
 
 const EvolutionChain = () => {
   return (
-    
+    <div></div>    
   ) 
 }
 
