@@ -1,10 +1,11 @@
 const TYPES = {
-	GRASS: "grass",
-	FIRE: "fire",
-	WATER: "water",
-	ELECTRIC: "electric",
-	POISON: "poison",
-	FLYING: "flying"
+	GRASS: "Grass",
+	FIRE: "Fire",
+	WATER: "Water",
+	ELECTRIC: "Electric",
+	POISON: "Poison",
+	FLYING: "Flying",
+	BUG: "Bug"
 }
 
 

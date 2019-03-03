@@ -3,7 +3,10 @@ import style from './Detail.css'
 import Types from 'enums/types.js'
 import Helper from './Helper.js'
 
-import {pokemon, CSS_COLORS} from 'store/pokemon.js'
+import { CSS_COLORS } from 'store/pokemon.js'
+import api from 'store/api.js'
+
+let pokemon = []
 
 const DetailBox = ({id, children}) => {
   const img = require("assets/images/detail_" + id + ".png")

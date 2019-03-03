@@ -1,23 +1,19 @@
 import axios from 'axios';
+import { PokemonPreview } from './pokemon.js'
 
-function testPokeFlex()
-{
-	let baseUri = 'http://localhost:5000/pokemon/'
+const previewURI = 'http://localhost:4545/pokemon/previews'
 
-	const end = 807
-	for (let i = 1; i < end; i++)
-	{
-		const fullUri = baseUri + i
-		setTimeout(() => {
-			axios.get(fullUri, (json) => { 
-				console.log(`Received the json from PokeFlex for Pokemon with id {i}`)
-			})
-		}, 100 * i)
-	}
-
+function getPokemonPreviews() {
+	return new Promise((resolve, reject) => {
+		axios.get(previewURI).then(response => {
+			if (response.status === 200) {
+				const previews = response.data.map(json => new PokemonPreview(json))
+				resolve(previews)
+			} else {
+				reject(response.status)
+			}
+		})	
+	})
 }
 
-export const runTests = () => {
-}
-
-export default { runTests }
+export default { getPokemonPreviews }

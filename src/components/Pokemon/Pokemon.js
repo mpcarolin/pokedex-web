@@ -5,23 +5,17 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
 import Helper from './Helper.js'
 
-import {pokemon, CSS_COLORS} from 'store/pokemon.js'
+import { CSS_COLORS } from 'store/pokemon.js'
+import api from 'store/api.js'
 
 const Card = (props) => {
   const {name, id, icon, types} = props.element
   const bgColor = CSS_COLORS[types[0]]
-  let myStyle = { 
+  const firstColor = CSS_COLORS[types[0]]
+  const secondColor = CSS_COLORS[types[1]]
+
+  const myStyle = {
     "backgroundColor": bgColor,
-  }
-  let secondTypeCSS = {}
-  if (types[1]) {
-    secondTypeCSS["backgroundColor"] = CSS_COLORS[types[1]]
-  }
-
-  let firstColor = CSS_COLORS[types[0]]
-  let secondColor = CSS_COLORS[types[1]]
-
-  myStyle = {
     "backgroundImage": `linear-gradient(to right, ${firstColor}, ${firstColor}, ${secondColor || firstColor})`
   }
 
@@ -95,24 +89,41 @@ class Pokemon extends Component {
   state = {
     filterText: "",
     filterType: "any",
-    pokemon: pokemon
+    pokemon: []
+  }
+
+  constructor () {
+    super()
+    api.getPokemonPreviews().then(previews => {
+      this.setState({
+        pokemon: previews
+      })
+    }) 
   }
 
   updateFilter = ({text, type}) => {
-    let newText =  (text !== undefined) ? text : this.state.filterText
-    let newType = Helper.notEmpty(type) ? type : this.state.filterType
+    const newText =  (text !== undefined) ? text : this.state.filterText
+    const newType = Helper.notEmpty(type) ? type : this.state.filterType
     this.setState(prev => ({
       filterText: newText,
       filterType: newType,
-      pokemon: pokemon.filter(poke => Helper.matches(poke, newText, newType))
     }))
   }
 
+  filteredResults (text, type) {
+    if (!text && !type) return this.state.pokemon
+
+    const matches = poke => Helper.matches(poke, text, type)
+  
+    return this.state.pokemon.filter(matches)
+  }
+
   render () {
+    const results = this.filteredResults(this.state.filterText, this.state.filterType)
     return (
       <div className="pokemon-root">
         <FilterBar onChange={this.updateFilter}/>
-        <CardList elements={this.state.pokemon} />
+        <CardList elements={results} />
       </div>
     )
   }
