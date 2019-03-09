@@ -14,12 +14,25 @@
   --pokedex-grey: #313c42;
   --pokedex-green: #54ad62;
 
-  --color-grass: #9ccb58;
-  --color-fire: #fb7d34;
-  --color-water: #4993c2;
-  --color-poison: #b881c7;
-  --color-electric: #edd446;
-  --color-flying: #82c0d2;
+  --color-normal: #A8A77A;
+  --color-fighting: #C22E28;
+  --color-flying: #A98FF3;
+  --color-poison: #A33EA1;
+  --color-ground: #E2BF65;
+  --color-rock: #B6A136;
+  --color-bug: #A6B91A;
+  --color-ghost: #735797;
+  --color-steel: #B7B7CE;
+  --color-fire: #EE8130;
+  --color-water: #6390F0;
+  --color-grass: #7AC74C;
+  --color-electric: #F7D02C;
+  --color-psychic: #F95587;
+  --color-ice: #96D9D6;
+  --color-dragon: #6F35FC;
+  --color-dark: #705746;
+  --color-fairy: #D685AD;
+  --color-bird: #A4BBB3;
 }
 
 html {

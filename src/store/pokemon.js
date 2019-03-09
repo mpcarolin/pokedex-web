@@ -37,12 +37,24 @@ export class PokemonPreview {
 // colors for the various types
 export const CSS_COLORS = {
   "any": "var(--pokedex-green)",
-  [Types.GRASS]: "var(--color-grass)",
-  [Types.WATER]: "var(--color-water)",
-  [Types.POISON]: "var(--color-poison)",
-  [Types.ELECTRIC]: "var(--color-electric)",
-  [Types.FLYING]: "var(--color-flying)",
-  [Types.FIRE]: "var(--color-fire)"
+  [Types.NORMAL]: "var(--color-normal)",
+	[Types.FIGHTING]: "var(--color-fighting)",
+	[Types.FLYING]: "var(--color-flying)",
+	[Types.POISON]: "var(--color-poison)",
+	[Types.GROUND]: "var(--color-ground)",
+	[Types.ROCK]: "var(--color-rock)",
+	[Types.BUG]: "var(--color-bug)",
+  [Types.GHOST]: "var(--color-ghost)",
+  [Types.STEEL]: "var(--color-steel)",
+	[Types.FIRE]: "var(--color-fire)",
+	[Types.WATER]: "var(--color-water)",
+	[Types.GRASS]: "var(--color-grass)",
+	[Types.ELECTRIC]: "var(--color-electric)",
+	[Types.PSYCHIC]: "var(--color-psychic)",
+  [Types.ICE]: "var(--color-ice)",
+	[Types.DRAGON]: "var(--color-dragon)",
+	[Types.DARK]: "var(--color-dark)",
+	[Types.FAIRY]: "var(--color-fairy)"
 }
 
 export default { PokemonPreview, CSS_COLORS }
