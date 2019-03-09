@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import style from './Layout.css';
+import './Layout.css';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 import Pokemon from 'components/Pokemon/Pokemon.js';
@@ -28,7 +28,7 @@ const NavLink = (props) => {
   const navClass = "nav-link " + (props.isCurrent ? "selected" : "")
   return (
     <span className="nav-link-flex-container" key={ props.link.name }>
-      <img width="50px" className="nav-link-icon" src={ props.link.icon} />
+      <img alt={props.link.name} width="50px" className="nav-link-icon" src={ props.link.icon} />
       <li className={navClass}>
         <Link className="router-link" to={props.link.route}>{ props.link.name }</Link>
       </li>
@@ -103,7 +103,7 @@ class Layout extends Component {
 
   _isPeekSwipe = (x) => {
     const width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    return parseInt(x) <= (width / 3.6)
+    return parseInt(x, 10) <= (width / 3.6)
   }
 
   handleRootMove = (evt) => {
@@ -136,7 +136,7 @@ class Layout extends Component {
         >
           <div className="nav-bar">
             <button className="sidebar-btn fas fa-bars" onClick={ this.handleClick } />
-            <img className="vertical-align site-logo" src={logo} height="50px" />
+            <img className="vertical-align site-logo" alt="Pokedex Logo" src={logo} height="50px" />
             <h1 className="nav-title">{SITE_NAME}</h1>
             <NavLinks links={pages} 
                       currentPage={this.state.currentPage}

@@ -1,5 +1,5 @@
 
-import style from './Pokemon.css'
+import './Pokemon.css'
 import Types from 'enums/types.js'
 import React, { Component } from 'react';
 import {Link} from 'react-router-dom'
@@ -54,7 +54,7 @@ class FilterBar extends Component {
   selectStyle = () => {
     const color = CSS_COLORS[this.state.type]
     return {
-      "backgroundColor": CSS_COLORS[this.state.type]  
+      "backgroundColor": color
     }
   }
 

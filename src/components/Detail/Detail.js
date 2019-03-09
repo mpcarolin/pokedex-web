@@ -1,10 +1,8 @@
 import React, { Component } from 'react';
-import style from './Detail.css'
-import Types from 'enums/types.js'
+import './Detail.css'
 import Helper from './Helper.js'
 
 import { CSS_COLORS } from 'store/pokemon.js'
-import api from 'store/api.js'
 
 let pokemon = []
 
@@ -14,7 +12,7 @@ const DetailBox = ({id, children}) => {
   return (
     <div className="card-container">
       <div className="portrait-container">
-        <img src={img} className="flex-item portrait" />
+        <img alt={species.name} src={img} className="flex-item portrait" />
       </div>
       <div className="detail-name-container">
         <h1 className="detail-name">{species.name}</h1>
@@ -114,18 +112,11 @@ const Abilities = ({abilities}) => {
   )
 }
 
-const EvolutionChain = () => {
-  return (
-    <div></div>    
-  ) 
-}
-
 class Detail extends Component {
   state = { }
 
   render() {
     const id = this.props.match.params.id
-    const portraitImg = require("assets/images/detail_" + id + ".png")
     return (
       <div className="detail-root">
         <div className="detail-top-sliver">

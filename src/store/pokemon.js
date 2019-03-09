@@ -1,6 +1,5 @@
 import Types from 'enums/types.js'
 import StringUtils from 'util/StringUtils'
-// sample data for testing
 
 function cleanName (name) {
   const charactersToClear = ["'", "."] //,"0", "1", "2", "3", "4", "5", "6", "7", "8", "9"]

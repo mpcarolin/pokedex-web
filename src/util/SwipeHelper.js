@@ -1,6 +1,3 @@
-var xDown = null;                                                        
-var yDown = null;                                                        
-
 // todo: put this into a utility class named SwipeHelper. Or pair with component Swipe wrapper.
 export const SWIPE_DIR = {
     "LEFT": "left",
